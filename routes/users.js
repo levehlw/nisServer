@@ -6,8 +6,8 @@ const { SuccessModel, ErrorModel } = require('../model/resModel')
 
 // 登录路由
 router.post('/login', function(req, res, next) {
-  const { username, password } = req.body
-  const result = login(username, password)
+  const { username, pwd } = req.body
+  const result = login(username, pwd)
   return result.then(data => {
     if(data){
       res.json(new SuccessModel(data))

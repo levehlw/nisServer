@@ -1,22 +1,22 @@
 const { genPassword } = require('../utils/cryp')
 const { exec,escape } = require('../db/mysql')
 
-const login  = (username, password) => {
+const login  = (username, pwd) => {
     escape(username)
-    password = genPassword(password)
-    escape(password)
-    const sql = `select username, role from users where username = '${username}' and pwd = '${password}'`
+    pwd = genPassword(pwd)
+    escape(pwd)
+    const sql = `select username, role from users where username = '${username}' and pwd = '${pwd}'`
     return exec(sql).then(rows=>{
-        return rows[0] || {}
+        return rows[0]
     })
 }
 const register = (userInfo) => {
-    let { username, password, role } = userInfo
+    let { username, pwd, role } = userInfo
     escape(username)
-    password = genPassword(password)
-    escape(password)
+    pwd = genPassword(pwd)
+    escape(pwd)
     escape(role)
-    const sql = `insert into users (username,pwd,role) values('${username}','${password}','${role}')`
+    const sql = `insert into users (username,pwd,role) values('${username}','${pwd}','${role}')`
     return exec(sql).then(
         rows => {
             return rows

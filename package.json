@@ -16,5 +16,8 @@
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "utility": "^1.16.3"
   }
 }
