@@ -5,6 +5,8 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var usersRouter = require('./routes/users');
+var userInfoRouter = require('./routes/userInfo');
+var orderRouter = require('./routes/orders')
 
 var app = express();
 
@@ -17,8 +19,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
+// 设置路由
 app.use('/api/user', usersRouter);
+app.use('/api/userinfo', userInfoRouter);
+app.use('/api/order', orderRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -6,7 +6,7 @@ const login  = (username, pwd) => {
     pwd = genPassword(pwd)
     escape(pwd)
     const sql = `select username, role from users where username = '${username}' and pwd = '${pwd}'`
-    return exec(sql).then(rows=>{
+    return exec(sql).then(rows => {
         return rows[0]
     })
 }
